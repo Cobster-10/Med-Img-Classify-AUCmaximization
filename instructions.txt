@@ -1,0 +1,24 @@
+To run the training and testing tasks as they were for the report and results generated, follow the exact same process as the demo code that was provided, but change the filename to the intended test feature or version:
+
+Before running final_model_train.py, the root must be changed to the path where your data files are located. 
+
+To save the model, locate the model_path in final_model_train.py and change it to a directory of your choice. You will use this saved model to test the model on the specified dataset. 
+
+Train on Pneumoniamnist dataset: 
+!python3 final_model_train.py --data=pneumoniamnist --task_index=0 --pos_class=0 --epochs=100 --loss="AUCM"
+
+Train on breastmnist dataset: 
+!python3 final_model_train.py --data=breastmnist --task_index=0 --pos_class=0 --epochs=100 --loss="AUCM"
+
+After each model is trained, the models will be saved to the model_path location. Copy this location path and replace {path to the saved model} with it when running the following test commands. 
+
+test on Pneumoniamnist dataset: 
+!python3 final_model_train.py --eval_only=1 --saved_model_path='{path to the saved model}' --data=pneumoniamnist --task_index=0 --pos_class=0 --epochs=100 --loss="AUCM"
+
+Test on breastmnist dataset: 
+!python3 final_model_train.py --eval_only=1 --saved_model_path='{path to the saved model}' --data=breastmnist --task_index=0 --pos_class=0 --epochs=100 --loss="AUCM"
+
+
+Google AutoML training is described in detail in the Experiments section of the attached report. Please follow these steps to perform the same training, or request access to the Vertex AI project at prestonpiercey@gmail.com
+
+The testing for AutoML was performed with an adapted version of the eval_google_automl_vision.py script from the MedMNIST experiments GitHub respository. The only changes made are the command line and the paths within the file.
